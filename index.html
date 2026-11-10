@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAPI spec in, runnable pytest contract suite out — $99, delivered in 24 hours</title>
+<meta name="description" content="Send me your OpenAPI 3.x or Swagger 2.0 spec. Within 24 hours you get a zip with one pytest module per documented operation, a stdlib-only client and a README. $99 fixed.">
+<style>
+:root{--ink:#14110f;--paper:#f4efe6;--rule:#14110f;--hot:#d9391e;--mute:#6b645b;--code:#1d1a17}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.55 Georgia,"Times New Roman",serif}
+main{max-width:720px;margin:0 auto;padding:56px 22px 80px}
+.kicker{font:600 13px/1 ui-monospace,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--hot)}
+h1{font-size:clamp(34px,6vw,52px);line-height:1.08;margin:14px 0 18px;letter-spacing:-.01em}
+.sub{font-size:21px;color:var(--mute);margin:0 0 30px}
+.cta{display:inline-block;background:var(--ink);color:var(--paper);padding:15px 26px;text-decoration:none;font:600 16px/1 ui-monospace,Menlo,monospace;border:2px solid var(--ink);box-shadow:5px 5px 0 var(--hot);transition:transform .12s,box-shadow .12s}
+.cta:hover,.cta:focus-visible{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--hot);outline:none}
+.cta:active{transform:translate(5px,5px);box-shadow:0 0 0 var(--hot)}
+.fine{font-size:15px;color:var(--mute);margin-top:14px}
+h2{font-size:26px;margin:54px 0 12px;border-top:3px solid var(--rule);padding-top:14px}
+pre{background:var(--code);color:#efe8da;padding:16px 18px;overflow-x:auto;font:14px/1.5 ui-monospace,Menlo,monospace;margin:14px 0}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.92em}
+ul{padding-left:20px}li{margin:6px 0}
+.limits li{color:var(--ink)}
+a{color:var(--hot)}
+footer{margin-top:60px;font-size:15px;color:var(--mute);border-top:1px solid var(--rule);padding-top:16px}
+@media (prefers-reduced-motion:reduce){.cta{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<div class="kicker">OpenAPI → pytest · $99 fixed</div>
+<h1>Your OpenAPI spec is lying. Find out where.</h1>
+<p class="sub">Send me your OpenAPI 3.x or Swagger 2.0 spec. Within 24 hours you get a runnable pytest contract suite, one test module per documented operation.</p>
+<a class="cta" href="https://itfabers.lemonsqueezy.com/checkout/buy/3ad36b82-d00d-42d5-84a4-42a36104c397">Order the suite — $99</a>
+<p class="fine">One-time payment through LemonSqueezy. After checkout I contact you at the order email to get the spec.</p>
+
+<h2>What is in the zip</h2>
+<ul>
+<li><code>tests/test_&lt;operationId&gt;.py</code> for every operation in the spec. Each asserts the documented success status.</li>
+<li>For secured operations, a second test that sends no credentials and expects 401 or 403.</li>
+<li><code>atg_client.py</code>, a stdlib-only HTTP client. No dependency besides <code>pytest</code>.</li>
+<li><code>conftest.py</code> and a <code>README.md</code> that says what was and was not verified.</li>
+</ul>
+
+<h2>How the spec gets caught lying</h2>
+<p>Documented behaviour becomes assertions. Point the suite at your API and every place where the spec and the server disagree turns into a failing test:</p>
+<pre>pip install pytest
+ATG_BASE_URL=https://api.yourcompany.com \
+ATG_API_TOKEN=... \
+ATG_DRY_RUN=0 python3 -m pytest tests/ -q</pre>
+<p>Credentials come from environment variables. Nothing secret is written into the files.</p>
+
+<h2>See a real one before you pay</h2>
+<p>The generator ran on the public Swagger Petstore OpenAPI 3 spec: 19 operations, one test module each, plus the client and README. The full output is in the repo, so you can run it yourself:</p>
+<pre>git clone https://github.com/arsenhambardzumyan/openapi-pytest-suite
+cd openapi-pytest-suite/example
+pip install pytest
+python3 -m pytest tests -q
+# 19 passed, 9 skipped (dry run, no network)</pre>
+<p><a href="https://github.com/arsenhambardzumyan/openapi-pytest-suite/tree/main/example">Browse the example suite</a></p>
+
+<h2>Honest limits</h2>
+<ul class="limits">
+<li>It covers documented behaviour only: the success status and, where the spec declares security, the missing-credentials rejection. Your business logic needs your own tests.</li>
+<li>The out-of-the-box run is a dry run with no network. It proves the suite matches the spec, not that your API does. The live run is where mismatches show up.</li>
+<li>I do not take secrets. Do not send API keys or tokens.</li>
+<li>Specs I cannot parse strictly are not delivered as a guess. I tell you what is wrong with the spec.</li>
+</ul>
+
+<footer>I'm Arsen Hambardzumyan, an independent developer in Yerevan. This is a new offer and there are no customer quotes on this page because there are no customers yet.</footer>
+</main>
+</body>
+</html>
